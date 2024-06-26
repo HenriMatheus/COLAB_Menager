@@ -7,7 +7,7 @@ const path = require("path")
 const routes = require("./routes.js")
 
 app.use(session({
-    secret: "YQkz4Z708Z3c6E65L8KcaYIuJ81r6aj6",
+    secret: process.env.SESSION_KEY,
     resave: false,
     saveUninitialized: false
 }))
