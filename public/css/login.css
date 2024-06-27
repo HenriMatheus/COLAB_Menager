@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #368986;
+    display: flex;
+    justify-content: space-around;
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+}
+
+.nomeProjet {
+    background-color: #5ADB94;
+    width: 50vh;
+    height: 10vh;
+    border-radius: 10px;
+    box-shadow: -15px -15px #3EA899;
+    color: white;
+    font-size: larger;
+}
+
+h1 {
+    margin-top: 3vh;
+    font-size: 30px;
+}
+
+section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+form {
+    color: white;
+    background-color: #5ADB94;
+    height: 50vh;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: -15px -15px #3EA899;
+}
+
+input {
+    width: 55%;
+    height: 6vh;
+    background: none;
+    text-align: center;
+    color: white;
+    border: none;
+    font-size: 30px;
+    border-bottom: 3px solid white;
+    outline: 0;
+}
+
+button {
+    width: 55%;
+    height: 5vh;
+    border-radius: 10px;
+    border: none;
+    background-color: #3EA899;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
