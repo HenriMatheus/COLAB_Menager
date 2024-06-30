@@ -7,49 +7,43 @@
     <title>Home</title>
 </head>
 <body>
-    <h1>Emprestimos de componentes</h1>
-    
-    <form action="/searchComponent/<%= user %>" method="post">
-        <h1>Pesquisar componente</h1>
-
-        <input type="text" name="componentName" placeholder="Nome do componente">
-        <button type="submit">Pesquisar</button>
-    </form>
-
-    <div>
-        <div>
+    <div class="areaSolicitacoes">
+        <form action="/searchComponent/<%= user %>" method="post">
+            <input type="text" name="componentName" placeholder="Nome do componente" class="searchBar">
+            <button type="submit" class="searchBt"><img src="/img/lupa.png" alt=""></button>
+        </form>
+        
+        <div class="listaComponentes">
             <% for (let i in components) { %>
-                <h2><%= components[i].nome %></h2>
 
-                <div>
-                    <input type="checkbox" name="component" value="<%= components[i].nome %>">
+                <div class="dadosComponente">
+                    <input type="checkbox" name="component" value="<%= components[i].nome %>" class="caixaSelecao">
+
+                    <h2 class="nomeComponente"><%= components[i].nome %></h2>
                     
-                    <select id="spec<%= components[i].nome %>">
+                    <select id="spec<%= components[i].nome %>" class="componente">
                         <% for (let j = 0; j < components[i].specification.length; j++) {%>
                             <option value="<%= components[i].specification[j].power %>"><%= components[i].specification[j].power %> | <%= components[i].specification[j].amount %> unidades restantes</option>
                         <% } %>
                     </select>
                     
-                    <input type="number" id="amount<%= components[i].nome %>" placeholder="Unidades">
+                    <input type="number" id="amount<%= components[i].nome %>" placeholder="Unidades" class="unidades">
                 </div>
             <% } %>
         </div>
 
-        <button onclick="changeWindow(true)">Meus emprestimos</button>
-
-        <div id="loansWindow">
-            <button onclick="changeWindow(false)">x</button>
-            <% for (let i in myLoans) { %>
-                <div>
-                    <h3><%= myLoans[i].nome_componente %></h3>
-                    <p>Espeficação: <%= myLoans[i].specs %></p>
-                    <p>Quantia: <%= myLoans[i].quantidade %></p>
-                </div>
-            <% } %>
-        </div>
+        <button onclick="finalizar('<%= user %>')" class="solicitarBt">Solicitar componentes</button>
     </div>
-    
-    <button onclick="finalizar('<%= user %>', )">Solicitar componentes</button>
+
+    <div id="loansWindow">        
+        <% for (let i in myLoans) { %>
+            <div class="itensEmprestados">
+                <h3 class="info"><%= myLoans[i].nome_componente %></h3>
+                <p class="info">Espeficação: <%= myLoans[i].specs %></p>
+                <p class="info">Quantia: <%= myLoans[i].quantidade %></p>
+            </div>
+        <% } %>
+    </div>
 
     <script>
         function finalizar(user) {
@@ -81,19 +75,6 @@
             .catch((err) => {
                 console.error(err)
             })
-        }
-
-        function changeWindow(status) {
-            let loansWindow = document.getElementById("loansWindow")
-            
-            if (status) {
-                loansWindow.style.display = "block"
-                status = false
-            } else {
-                loansWindow.style.display = "none"
-                status = true
-            }
-
         }
     </script>
 </body>
