@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.sideBar {
+    margin-top: 1%;
+    display: none;
+    position: fixed;
+    background-color: #5ADB94;
+    box-shadow: -8px -8px #3EA899;
+    width: 15%;
+    height: 40%;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.itens, .sair {
+    padding: 5%;
+    background-color: #3EA899;
+    margin-top: 5%;
+    width: 70%;
+    border-radius: 10px;
+}
+
+.sair {
+    color: #DE4343;
+    text-align: center;
+    font-weight: bold;
+}
+
+.menuBt {
+    background-color: #5ADB94;
+    box-shadow: -8px -8px #3EA899;
+    border: none;
+    border-radius: 10px;
+    color: #253D42;
+    font-size: 30px;
+    text-align: center;
+    cursor: pointer;
+    width: 3vw;
+    height: 5vh;
+}

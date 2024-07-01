@@ -3,39 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/loans.css">
   <title>LoanManarger</title>
 </head>
 <body>
-  <div>
+  <header>
     <%- include("./partials/sideBar.ejs") %>
-    <h1>Confirmar devoluções</h1>
-  </div>
-  
-  <form action="/searchLoans" method="post">
-    <h1>Pesquisar emprestimo</h1>
-    <input type="number" name="registration" placeholder="Matricula">
-    <button type="submit">Pesquisar</button>
-  </form>
 
-  <div>
-    <button onclick="selectAll()">Selecionar tudo</button>
+    <form action="/searchLoans" method="post">
+      <input type="number" name="registration" placeholder="Matrícula" class="searchBar">
+      <button type="submit" class="searchBt"><img src="/img/lupa.png" alt=""></button>
+    </form>
+  </header>
   
+  <h1>Confirmar devoluções</h1>
+
+  <div class="listaEmprestimos">
     <% for(let i in loans) {%>
-      <div>
-        <input type="checkbox" value="<%= loans[i].id %>">
-  
+      <div class="emprestimo">
+        <input type="checkbox" value="<%= loans[i].id %>" class="caixaSelecao">
+
         <ul>
           <h2>Matricula: <%= loans[i].registration %></h2>
-          <li>Component: <%= loans[i].name_components %></li>
-          <li>Especificação: <%= loans[i].specifications %></li>
-          <li>Unidades: <%= loans[i].amount %> unidades</li>
+
+          <li>Component: <%= loans[i].nome_componente %></li>
+          <li>Especificação: <%= loans[i].specs %></li>
+          <li>Unidades: <%= loans[i].amount %> quantidade</li>
         </ul>
       </div>
-
-      <hr>
     <% } %>
-  
-    <button onclick="sendRequest()">Confirmar devolução</button>
+  </div>
+
+  <div class="botoes">
+    <button onclick="selectAll()" class="selecionarBt">Selecionar tudo</button>
+    <button onclick="sendRequest()" class="confirmarBt">Confirmar devolução</button>
   </div>
 
   <script>

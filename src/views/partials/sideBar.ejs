@@ -1,17 +1,14 @@
-<style>
-  .sideBar {
-    display: none;
-  }
-</style>
+<link rel="stylesheet" href="/css/sideBar.css">
 
 <div>
-  <button onclick="showSideBar()">☰</button>
+  <button onclick="showSideBar()" class="menuBt">☰</button>
 
-  <ul class="sideBar">
-    <li><a href="/loans">Gerenciar emprestimos de componentes</a></li>
-    <li><a href="/addComponent">Adicionar componentes</a></li>
-    <li><a href="/updateComponent">Atualizar dados de componentes</a></li>
-    <li><a href="/dellComponent">Remover componentes</a></li>
+  <ul class="sideBar" style="list-style: none;">
+    <li class="itens"><a href="/loans">Gerenciar emprestimos</a></li>
+    <li class="itens"><a href="/addComponent">Adicionar componentes</a></li>
+    <li class="itens"><a href="/updateComponent">Atualizar componentes</a></li>
+    <li class="itens"><a href="/dellComponent">Remover componentes</a></li>
+    <li class="sair">Sair</li>
   </ul>
 </div>
 
