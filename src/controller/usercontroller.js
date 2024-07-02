@@ -19,6 +19,11 @@ class usersControll {
             res.redirect("/")
         }
     }
+
+    async logout(req, res) {
+        req.session.destroy()
+        res.redirect("/")
+    }
 }
 
 module.exports = new usersControll()

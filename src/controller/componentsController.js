@@ -49,41 +49,47 @@ class componentsControll {
   async searchComponent(req, res) {
     const componentName = req.body.componentName
     const registration = req.params.registration
-    let valueToLowerCase = componentName.toLowerCase()
-    let nameComponent = valueToLowerCase[0].toUpperCase() + valueToLowerCase.substring(1)
-    
-    try {
-      const components = await queryComponents.getComponent(nameComponent)
-      const specs = await queryComponents.getAllSpec()
-      const loans = await queryLoan.getLoan(registration)
+    const regex = /\S/
 
-      let arrayComponents = []
-      let arraySpecs = []
+    if (regex.test(componentName)) {
+      let valueToLowerCase = componentName.toLowerCase()
+      let nameComponent = valueToLowerCase[0].toUpperCase() + valueToLowerCase.substring(1)
+      
+      try {
+        const components = await queryComponents.getComponent(nameComponent)
+        const specs = await queryComponents.getAllSpec()
+        const loans = await queryLoan.getLoan(registration)
 
-      for (let i in components) {
-        components[i].specification = []
-        arrayComponents.push(components[i])
-      }
+        let arrayComponents = []
+        let arraySpecs = []
 
-      for (let i in specs) {
-        arraySpecs.push(specs[i])
-      }
+        for (let i in components) {
+          components[i].specification = []
+          arrayComponents.push(components[i])
+        }
 
-      for (let component of arrayComponents) {
-        for (let spec of arraySpecs) {
-          if (component.id === spec.id_componente) {
-            component.specification.push({power: spec.potencia, amount: spec.amount_components})
+        for (let i in specs) {
+          arraySpecs.push(specs[i])
+        }
+
+        for (let component of arrayComponents) {
+          for (let spec of arraySpecs) {
+            if (component.id === spec.id_componente) {
+              component.specification.push({power: spec.potencia, amount: spec.amount_components})
+            }
           }
         }
+        
+        res.render("home", {
+          components: arrayComponents, 
+          user: registration,
+          myLoans: loans   
+        })
+      } catch(err) {
+        console.error(err)
       }
-      
-      res.render("home", {
-        components: arrayComponents, 
-        user: registration,
-        myLoans: loans   
-      })
-    } catch(err) {
-      console.error(err)
+    } else {
+      res.redirect(`/home/${registration}`)
     }
   }
 

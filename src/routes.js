@@ -2,6 +2,7 @@ const router = require("express").Router()
 const usersControll = require("./controller/usercontroller.js")
 const componentsControll = require("./controller/componentsController.js")
 const loanController = require("./controller/loanController.js")
+const usercontroller = require("./controller/usercontroller.js")
 
 function autenticate(req, res, next) {
     req.session.use ? next() : res.send("Sessão não autorizada!")
@@ -21,5 +22,6 @@ router.get("/dellComponent", autenticate,(req, res) => res.render("dellComponent
 router.post("/addComponent/newComponent", autenticate, componentsControll.newComponent)
 router.post("/updateComponent/newUpdate", autenticate, componentsControll.updatingComponent)
 router.post("/dellComponent/removeComponent", autenticate, componentsControll.deleteComponents)
+router.get("/logout", autenticate, usercontroller.logout)
 
 module.exports = router

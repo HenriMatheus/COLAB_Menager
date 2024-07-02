@@ -87,6 +87,10 @@ img {
   width: 8vw;
 }
 
+.nomeComponentec::-webkit-scrollbar {
+  display: none;
+}   
+
 .caixaSelecao {
   margin-top: 1px;
   cursor: pointer;
@@ -114,6 +118,10 @@ img {
   align-items: center;
   overflow: auto;
 }
+
+#loanWindow::-webkit-scrollbar {
+  display: none;
+}   
 
 .itensEmprestados {
   background-color: #3EA899;
