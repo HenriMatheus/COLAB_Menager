@@ -3,28 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/gerenciarComponentes.css">
   <title>Atualizar componente</title>
 </head>
 <body>
-  <%- include("./partials/sideBar.ejs") %>
-
-  <h1>Atualizar componente</h1>
+  <header>
+    <%- include("./partials/sideBar.ejs") %>
+    <h1>Atualizar componente</h1>
+  </header>
 
   <form action="/updateComponent/newUpdate" method="post">
-    <input type="text" name="component" placeholder="Nome do componente a ser atualizado">
-    <input type="text" name="spec" placeholder="Potencia do componente a ser atualizado">
+    <div class="dadosNovoComponente">
+      <h2>Componente a ser atualizado</h2>
+      <input type="text" name="component" placeholder="Nome" class="inputDados">
+      <input type="text" name="spec" placeholder="Especificação" class="inputDados">
 
-    <div>
       <h2>Novas especificações</h2>
-
-      <div>
-        <input type="text" name="newComponent" placeholder="Nome do componente">
-        <input type="text" name="newSpec" placeholder="Potencia">
-        <input type="number" name="newAmount" placeholder="Quantidade">
-      </div>
+      <input type="text" name="newComponent" placeholder="Nome" class="inputDados">
+      <input type="text" name="newSpec" placeholder="Especificação" class="inputDados">
+      <input type="number" name="newAmount" placeholder="Quantidade" class="inputDados">
     </div>
     
-    <button type="submit">Atualizar</button>
+    <button type="submit" class="addBT">Atualizar</button>
   </form>
 </body>
 </html>
