@@ -11,6 +11,7 @@
     box-shadow: -8px -8px #3EA899;
     width: 15%;
     height: 40%;
+    border-radius: 10px;
 }
 
 a {
@@ -24,6 +25,8 @@ a {
     margin-top: 5%;
     width: 70%;
     border-radius: 10px;
+    margin-left: 9%;
+    font-weight: bold;
 }
 
 .sair {

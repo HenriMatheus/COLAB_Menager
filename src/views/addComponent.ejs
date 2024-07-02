@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/addComponente.css">
   <title>Adicionar componente</title>
 </head>
 <body>
-  <%- include("./partials/sideBar.ejs") %>
-
-  <h1>Adicionar componente</h1>
-
-  <p><%= flash %></p>
+  <header>
+    <%- include("./partials/sideBar.ejs") %>
+    <h1>Adicionar componente</h1>
+  </header>
 
   <form action="/addComponent/newComponent" method="post">
-    <div>
-      <input type="text" name="component" placeholder="Nome do componente">
-      <input type="text" name="spec" placeholder="Potencia">
-      <input type="number" name="amount" placeholder="Quantidade">
+    <div class="dadosNovoComponente">
+      <input type="text" name="component" placeholder="Nome do componente" class="inputDados">
+      <input type="text" name="spec" placeholder="Potencia" class="inputDados">
+      <input type="number" name="amount" placeholder="Quantidade" class="inputDados">
     </div>
     
-    <button type="submit">Adicionar</button>
+    <button type="submit" class="addBT">Adicionar</button>
   </form>
 </body>
 </html>
