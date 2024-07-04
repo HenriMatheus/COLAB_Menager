@@ -124,11 +124,13 @@ class componentsControll {
       const component  = await queryComponents.getComponent(nameComponents)
       const spec = await queryComponents.getSpec(values[1])
 
-      console.log(component)
-
       if (component.length > 0 && spec.length > 0) {
-        await queryComponents.updateComponent(values[2], component.id)
+        await queryComponents.updateComponent(values[2], component[0].id)
         await queryComponents.updateSpec(values[3], values[4], spec[0].id)
+
+        req.flash("updateComponent", "Componente atualizado")
+      }else if(component.length > 0 && spec.length == 0) {
+        await queryComponents.updateComponent(values[2], component[0].id)
 
         req.flash("updateComponent", "Componente atualizado")
       } else {
@@ -152,6 +154,10 @@ class componentsControll {
 
       if (component.length > 0 && spec.length > 0) {
         await queryComponents.deleteSpec(spec[0].id)
+
+        res.render("dellComponent", {flash: "Componente removido"})
+      } else if (component.length > 0 && spec.length == 0) {
+        await queryComponents.deleteComponent(component[0].id)
 
         res.render("dellComponent", {flash: "Componente removido"})
       } else {
