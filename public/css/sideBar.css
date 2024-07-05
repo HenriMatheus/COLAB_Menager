@@ -3,7 +3,7 @@
     padding: 0;
 }
 
-.sideBar {
+.sideBar{
     margin-top: 1%;
     display: none;
     position: fixed;
@@ -31,7 +31,6 @@ a {
 
 .sair {
     color: #DE4343;
-    text-align: center;
 }
 
 .menuBt {

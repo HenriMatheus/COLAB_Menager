@@ -3,6 +3,27 @@
     padding: 0;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #5ADB94 inset !important;
+}
+
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+    
+}
+input[type=number] { 
+   -moz-appearance: textfield;
+   appearance: textfield;
+
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: #253D42 !important;
+} 
+
 body {
     background-color: #368986;
     display: flex;
@@ -17,7 +38,7 @@ body {
     height: 10vh;
     border-radius: 10px;
     box-shadow: -15px -15px #3EA899;
-    color: white;
+    color: #253D42;
     font-size: larger;
 }
 
@@ -35,7 +56,7 @@ section {
 }
 
 form {
-    color: white;
+    color: #253D42;
     background-color: #5ADB94;
     height: 50vh;
     border-radius: 10px;
@@ -51,10 +72,10 @@ input {
     height: 6vh;
     background: none;
     text-align: center;
-    color: white;
+    color: #253D42;
     border: none;
     font-size: 30px;
-    border-bottom: 3px solid white;
+    border-bottom: 3px solid #253D42;
     outline: 0;
 }
 
@@ -67,4 +88,6 @@ button {
     color: white;
     font-size: 20px;
     cursor: pointer;
+    font-weight: bold;
+    box-shadow: -1px -1px 3px #323232;
 }

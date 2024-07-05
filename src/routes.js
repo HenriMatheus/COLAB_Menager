@@ -24,6 +24,6 @@ router.post("/addComponent/newComponent", autenticate, componentsControll.newCom
 router.post("/updateComponent/newUpdate", autenticate, componentsControll.updatingComponent)
 router.post("/dellComponent/removeComponent", autenticate, componentsControll.deleteComponents)
 router.get("/logout", autenticate, usercontroller.logout)
-router.get("/error_session", (req, res) => res.sendFile(path.join(__dirname, "..", "public", "html", "errorSession.html")))
+router.get("/error_session",(req, res) => res.sendFile(path.join(__dirname, "..", "public", "html", "errorSession.html")))
 
 module.exports = router
