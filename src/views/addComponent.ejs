@@ -14,12 +14,14 @@
 
   <form action="/addComponent/newComponent" method="post">
     <div class="dadosNovoComponente">
-      <input type="text" name="component" placeholder="Nome do componente" class="inputDados">
-      <input type="text" name="spec" placeholder="Potencia" class="inputDados">
-      <input type="number" name="amount" placeholder="Quantidade" class="inputDados">
+      <input type="text" name="component" placeholder="Nome do componente" class="inputDados" required>
+      <input type="text" name="spec" placeholder="Potencia" class="inputDados" required>
+      <input type="number" name="amount" placeholder="Quantidade" class="inputDados" required>
     </div>
     
     <button type="submit" class="addBT">Adicionar</button>
   </form>
+
+  <script src="/js/addComponent.js"></script>
 </body>
 </html>
