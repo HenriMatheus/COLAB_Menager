@@ -125,12 +125,12 @@ class componentsControll {
       const spec = await queryComponents.getSpec(values[1])
 
       if (component.length > 0 && spec.length > 0) {
-        await queryComponents.updateComponent(values[2], component[0].id)
-        await queryComponents.updateSpec(values[3], values[4], spec[0].id)
+        await queryComponents.updateComponent(values[2] == "" ? component[0].nome : values[2], component[0].id)
+        await queryComponents.updateSpec(values[3] == "" ? spec[0].potencia : values[3], values[4] == "" ? spec[0].amount_components : values[4], spec[0].id)
 
         req.flash("updateComponent", "Componente atualizado")
       }else if(component.length > 0 && spec.length == 0) {
-        await queryComponents.updateComponent(values[2], component[0].id)
+        await queryComponents.updateComponent(values[2] == "" ? component[0].nome : values[2], component[0].id)
 
         req.flash("updateComponent", "Componente atualizado")
       } else {
