@@ -168,3 +168,9 @@ img {
   box-shadow: -1px -1px 10px #323232;
   margin: 1%;
 }
+
+.logout {
+  position: absolute;
+  left: 95%;
+  top: 90%;
+}
