@@ -35,7 +35,7 @@
         <button onclick="finalizar('<%= user %>')" class="solicitarBt">Solicitar componentes</button>
     </div>
 
-    <div id="loansWindow">        
+    <div id="loansWindow" class="loansWindow">        
         <% for (let i in myLoans) { %>
             <div class="itensEmprestados">
                 <h3 class="info"><%= myLoans[i].nome_componente %></h3>

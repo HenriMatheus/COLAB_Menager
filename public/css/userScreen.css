@@ -12,7 +12,11 @@ input:-webkit-autofill:active{
 
 input:-webkit-autofill {
   -webkit-text-fill-color: #253D42 !important;
-} 
+}
+
+.loanWindow::-webkit-scrollbar {
+  display: none;
+}
 
 body {
   background-color: #368986;
@@ -37,6 +41,10 @@ button {
   overflow: auto;
   height: 60vh;
 }
+
+.listaComponentes::-webkit-scrollbar {
+  display: none;
+}   
 
 form {
   margin-top: 10%;
@@ -117,7 +125,7 @@ img {
   background-color: #2c85cefd;
 }
 
-#loansWindow {
+.loansWindow {
   background-color: #5ADB94;
   box-shadow: -8px -8px #3EA899;
   border-radius: 10px;
@@ -130,7 +138,7 @@ img {
   overflow: auto;
 }
 
-#loanWindow::-webkit-scrollbar {
+.loansWindow::-webkit-scrollbar {
   display: none;
 }   
 
@@ -141,6 +149,7 @@ img {
   border-radius: 10px;
   color: white;
   margin-top: 5%;
+  padding: 3%;
 }
 
 .info { 
@@ -157,4 +166,5 @@ img {
   height: 8%;
   font-size: 20px;
   box-shadow: -1px -1px 10px #323232;
+  margin: 1%;
 }
