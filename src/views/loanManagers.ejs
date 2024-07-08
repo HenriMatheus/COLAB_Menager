@@ -22,13 +22,13 @@
     <% for(let i in loans) {%>
       <div class="emprestimo">
         <input type="checkbox" value="<%= loans[i].id %>" class="caixaSelecao">
-
+        <%= console.log(loans[i])%>
         <ul>
           <h2>Matricula: <%= loans[i].registration %></h2>
 
           <li>Component: <%= loans[i].nome_componente %></li>
           <li>Especificação: <%= loans[i].specs %></li>
-          <li>Unidades: <%= loans[i].amount %> quantidade</li>
+          <li>Unidades: <%= loans[i].quantidade %></li>
         </ul>
       </div>
     <% } %>
