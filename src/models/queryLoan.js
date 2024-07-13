@@ -39,6 +39,19 @@ class queryLoan {
 		})
     }
 
+    updateLoan(id) {
+        return new Promise((resolve, reject) => {
+            connection.query(
+                "update loanComponents set status = 1 where id = ?",
+                id,
+                (err, results) => {
+                    resolve(results)
+                    reject(err)
+                }
+            )
+		})
+    }
+
     dellLoan(id) {
         return new Promise((resolve, reject) => {
             connection.query(

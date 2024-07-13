@@ -34,13 +34,14 @@
 
         <button onclick="finalizar('<%= user %>')" class="solicitarBt">Solicitar componentes</button>
     </div>
-
+    
     <div id="loansWindow" class="loansWindow">        
         <% for (let i in myLoans) { %>
             <div class="itensEmprestados">
                 <h3 class="info"><%= myLoans[i].nome_componente %></h3>
                 <p class="info">Espeficação: <%= myLoans[i].specs %></p>
                 <p class="info">Quantia: <%= myLoans[i].quantidade %></p>
+                <p class="info">status: <%= myLoans[i].status == 1 ? "Aceito" : "Pendente" %></p>
             </div>
         <% } %>
     </div>

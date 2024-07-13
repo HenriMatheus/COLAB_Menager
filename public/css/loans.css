@@ -154,6 +154,28 @@ li {
     justify-content: center;
 }
 
+.bt {
+    width: 9%;
+    height: 90%;
+    background-color: #3EA899;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    box-shadow: -1px -1px 10px #323232;
+    font-weight: bold;
+    margin-right: 1%;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.botoesBT {
+    display: flex;
+    align-items: end;
+    width: 100%;
+    height: 7vh;
+    justify-content: center;
+}
+
 .caixaSelecao {
     margin-right: 2%;
     margin-top: 7%;

@@ -9,7 +9,7 @@ class usersControll {
             
             try {
                 const users = await queryUser.getUser(registration)
-                registration.length === 14 ? res.redirect(`/home/${registration}`) : res.redirect("/loans")
+                registration.length === 14 ? res.redirect(`/home/${registration}`) : res.redirect("/outstandingLoans")
             } catch (err) {
                 console.error(err)
             }

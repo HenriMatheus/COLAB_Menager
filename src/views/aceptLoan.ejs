@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/loans.css">
+  <title>Emprestimos pendentes</title>
+</head>
+<body>
+  <header>
+    <%- include("./partials/sideBar.ejs") %>
+
+    <form action="/searchLoans" method="post">
+      <input type="number" name="registration" placeholder="Matrícula" class="searchBar">
+      <button type="submit" class="searchBt"><img src="/img/lupa.png" alt=""></button>
+    </form>
+  </header>
+  
+  <h1>Emprestimos pendentes</h1>
+
+  <div class="listaEmprestimos">
+    <% for(let i in loans) { %>
+      <div class="emprestimo">
+        <input type="checkbox" value="<%= loans[i].id %>" class="caixaSelecao">
+
+        <ul>
+          <h2>Matricula: <%= loans[i].registration %></h2>
+
+          <li>Component: <%= loans[i].nome_componente %></li>
+          <li>Especificação: <%= loans[i].specs %></li>
+          <li>Unidades: <%= loans[i].quantidade %></li>
+        </ul>
+      </div>
+    <% } %>
+  </div>
+
+  <div class="botoesBT">
+    <button onclick="selectAll()" class="bt">Selecionar tudo</button>
+    <button onclick="sendRequest(false)" class="bt">Sem estoque</button>
+    <button onclick="sendRequest(true)" class="bt">Aceitar emprestimos</button>
+  </div>
+
+  <script src="/js/aceptLoan.js"></script>
+</body>
+</html>

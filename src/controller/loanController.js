@@ -2,10 +2,62 @@ const queryLoan = require("../models/queryLoan.js")
 const queryComponents = require("../models/queryComponents.js")
 
 class loanController {
+    async getOutstandingLoans(req, res) {
+        try {
+            const allLoans = await queryLoan.getAllLoans()
+            let loansOutstanding = []
+
+            for (let loan of allLoans) {
+                if (loan.status == 0) {
+                    loansOutstanding.push(loan)
+                }
+            }
+            res.render("aceptLoan", {loans: loansOutstanding})
+        } catch(err) {
+            console.error(err)
+        }
+    }
+
+    async aceptLoan(req, res) {
+        const values = req.body
+
+        try {
+            for (let i in values) {
+                await queryLoan.updateLoan(Number(values[i]))
+            }
+        } catch(err) {
+            console.error(err)
+        }
+
+        res.json({message: "Emprestimo aceito"})
+    }
+
+    async rejectLoan(req, res) {
+        const values = req.body
+
+        try {
+            for (let i in values) {
+                await queryLoan.dellLoan(Number(values[i]))
+            }
+        } catch(err) {
+            console.error(err)
+        }
+
+        res.json({message: "Emprestimo recusado"})
+    }
+
     async getLoans(req, res) {
         try {
             const allLoans = await queryLoan.getAllLoans()
-            res.render("loanManagers", {loans: allLoans})
+            let loansAccepted = []
+
+            for (let loan of allLoans) {
+                if (loan.status == 1) {
+                    loansAccepted.push(loan)
+                }
+            }
+
+            res.render("loanManagers", {loans: loansAccepted})
         } catch(err) {
             console.error(err)
         }
