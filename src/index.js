@@ -10,7 +10,8 @@ const tooBusyCheck = require("./middleware/tooBusy.js")
 app.use(session({
     secret: process.env.SESSION_KEY,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: true,
+    cookie: { maxAge: 600000 }
 }))
 
 require("dotenv").config()
