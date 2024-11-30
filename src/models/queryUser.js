@@ -25,6 +25,19 @@ class queryUser {
             )
 		})
     }
+
+    addUser(value) {
+        return new Promise((resolve, reject) => {
+            connection.query(
+                "insert into users (registration) value (?)",
+                value,
+                (err, results) => {
+                    resolve(results)
+                    reject(err)
+                }
+            )
+		})
+    }
 }
 
 module.exports = new queryUser()

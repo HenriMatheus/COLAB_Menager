@@ -1,5 +1,6 @@
 const axios = require("axios")
 const qs = require("qs")
+const queryUsers = require("../models/queryUser.js")
 
 class usersControll {
     async oauth(req, res) {
@@ -49,10 +50,14 @@ class usersControll {
         console.error(`Error: ${error}`)
         }
 
-        if (registration.trim().length >= 10 && registration.trim().length <= 14) {
+        if (registration) {
             req.session.use = registration
             
             try {
+                if (queryUsers.getUser(registration) == null) {
+                    queryUsers.addUser(registration)
+                }
+
                 registration.length === 14 ? res.redirect(`/home/${registration}`) : res.redirect("/outstandingLoans")
             } catch (err) {
                 console.error(err)
