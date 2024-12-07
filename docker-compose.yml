@@ -1,0 +1,31 @@
+version: '3.4'
+
+services:
+  tcc:
+    image: colab
+    networks:
+      - network_public
+    ports:
+      - 1758:1758
+    env_file: .env
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      resources:
+        limits:
+          cpus: "1"
+          memory: 1024M
+      labels:
+      - traefik.enable=true
+      - traefik.http.routers.colab.rule=Host(`colab.manager-01.interleads.shop`)
+      - traefik.http.services.colab.loadbalancer.server.port=1758
+      - traefik.http.routers.colab.service=colab
+      - traefik.http.routers.colab.tls.certresolver=letsencryptresolver
+      - traefik.http.routers.colab.entrypoints=websecure
+      - traefik.http.routers.colab.tls=true
+
+networks:
+  network_public:
