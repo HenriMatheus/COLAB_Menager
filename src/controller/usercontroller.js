@@ -52,17 +52,15 @@ class usersControll {
 
         if (registration) {
             req.session.use = registration
-            
-            try {
-                if (queryUsers.getUser(registration) == null) {
+
+            queryUsers.getUser(registration)
+            .then((data) => {
+                if (data.length == 0) {
                     queryUsers.addUser(registration)
                 }
+            })
 
-                registration.length === 14 ? res.redirect(`/home/${registration}`) : res.redirect("/outstandingLoans")
-            } catch (err) {
-                console.error(err)
-            }
-            
+            registration.length === 14 ? res.redirect(`/home/${registration}`) : res.redirect("/outstandingLoans")
         } else {
             res.redirect("/")
         }
