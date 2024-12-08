@@ -1,23 +1,20 @@
 const express = require("express")
 const app = express()
 const bodyParser = require("body-parser")
-const session = require("express-session")
+const session = require("cookie-session")
 const flash = require("connect-flash")
 const path = require("path")
 const routes = require("./routes.js")
 const tooBusyCheck = require("./middleware/tooBusy.js")
 
-const redisClient = redis.createClient({
-    host: "178.156.145.189",
-    port: 6379
-})
-
 app.use(session({
-    store: new RedisStore({ client: redisClient }),
     secret: process.env.SESSION_KEY,
+    saveUninitialized: true,
     resave: false,
-    saveUninitialized: false,
-    cookie: { maxAge: 600000 }
+    maxAge: 1000 * 60 * 15,
+    cookie: {
+        secure: true
+    }
 }))
 
 require("dotenv").config()
@@ -30,4 +27,4 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"))
 app.use(routes)
 
-app.listen(process.env.PORT, () => console.log("https://colab.manager-01.interleads.shop/"))
+app.listen(process.env.PORT, () => console.log("https://colab.manager-01.interleads.shop/\nhttp://localhost:1758"))
