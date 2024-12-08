@@ -7,10 +7,16 @@ const path = require("path")
 const routes = require("./routes.js")
 const tooBusyCheck = require("./middleware/tooBusy.js")
 
+const redisClient = redis.createClient({
+    host: "178.156.145.189",
+    port: 6379
+})
+
 app.use(session({
+    store: new RedisStore({ client: redisClient }),
     secret: process.env.SESSION_KEY,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: { maxAge: 600000 }
 }))
 
@@ -24,4 +30,4 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"))
 app.use(routes)
 
-app.listen(process.env.PORT, () => console.log(`http://localhost:${process.env.PORT}`))
+app.listen(process.env.PORT, () => console.log("https://colab.manager-01.interleads.shop/"))
