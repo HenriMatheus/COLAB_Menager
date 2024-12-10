@@ -47,7 +47,7 @@ class usersControll {
             
             registration = userInfoResponse.data.identificacao
         } catch (error) {
-        console.error(`Error: ${error}`)
+            console.error(`Error: ${error}`)
         }
 
         if (registration) {
@@ -59,6 +59,9 @@ class usersControll {
                     queryUsers.addUser(registration)
                 }
             })
+            .catch((err) => {
+                console.err(err)
+            })
 
             registration.length === 14 ? res.redirect(`/home/${registration}`) : res.redirect("/outstandingLoans")
         } else {
@@ -67,8 +70,12 @@ class usersControll {
     }
 
     async logout(req, res) {
-        req.session.destroy()
-        res.redirect("/")
+        try {
+            req.session = null
+            res.redirect("/")
+        } catch (error) {
+            console.error(error)
+        }
     }
 }
 
